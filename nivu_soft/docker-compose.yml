@@ -1,8 +1,19 @@
-version: '3.8'
-
 services:
+  react-dev:
+    container_name: nivu_dev
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    command: ["npm", "run", "dev", "--", "--host"]
+    environment:
+      - NODE_ENV=development
+
   react-prod:
-    container_name: nivu_soft_prod
+    container_name: nivu_prod
     build:
       context: .
       dockerfile: Dockerfile
