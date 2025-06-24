@@ -1,9 +1,12 @@
 import Navbar from "../components/Navbar";
+import Hero from "../components/Hero"; // Asegúrate de que el path sea correcto
 
 function Main() {
   return (
     <>
       <Navbar />
+      <Hero /> {/* Sección Hero destacada */}
+
       <div className="min-h-screen bg-gray-100 p-8">
         <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-8">
           Servicios de NivuSoft 🚀
