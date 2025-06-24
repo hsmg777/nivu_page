@@ -17,7 +17,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
 
         {/* Página de mantenimiento (opcional activar) */}
-         <Route path="*" element={<Maintenance />} />
+        {/* <Route path="*" element={<Maintenance />} /> */}
 
         {/* Página 404 como fallback */}
         <Route path="*" element={<NotFound />} />

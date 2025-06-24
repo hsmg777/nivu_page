@@ -18,7 +18,7 @@
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
@@ -60,20 +60,13 @@
 
 .card-one {
   position: absolute;
-  top: 170px;
-  left: -50px;
+  top: 100px;
+  left: 100px;
   z-index: 1;
 }
 
-.card-two {
-  position: absolute;
-  top: 50px;
-  left: 390px;
-  z-index: 2;
-}
-
 .example-card {
-  width: 400px;
+  width: 700px;
   max-width: 100%;
   border-radius: 16px;
   transition: transform 0.2s ease;

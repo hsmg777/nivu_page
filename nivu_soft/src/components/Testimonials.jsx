@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function Testimonials() {
   const testimonios = [
     {
@@ -39,9 +41,14 @@ function Testimonials() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {testimonios.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white text-gray-700 rounded-lg shadow-lg p-6 flex flex-col items-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+              whileHover={{ scale: 1.05 }}
+              viewport={{ once: false, amount: 0.2 }}
             >
               <img
                 src={item.avatar}
@@ -52,7 +59,7 @@ function Testimonials() {
               <p className="text-sm text-gray-600 mt-2 text-center">
                 “{item.mensaje}”
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

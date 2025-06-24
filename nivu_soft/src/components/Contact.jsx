@@ -1,21 +1,63 @@
+
 function Contact() {
   return (
-    <section className="bg-white py-16 px-4" id="contact">
+    <section className="bg-white py-16 px-4 scroll-mt-32 min-h-[400px]" id="contacto">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-blue-900 mb-14">Contacto</h2>
 
-        {/* Fila superior */}
-        <div className="grid grid-cols-3 gap-8 items-center justify-items-center mb-10">
-          <img src="/images/ig link.png" alt="Instagram" className="w-[86px] h-[89px]" />
-          <img src="/images/wpp link.png" alt="WhatsApp" className="w-[125px] h-[105px]" />
-          <img src="/images/mail lnk.png" alt="Gmail" className="w-[170px] h-[91px]" />
+        {/* Título + descripción pegados */}
+        <div className="mb-14">
+          <h2 className="text-4xl font-extrabold text-blue-900">Contacto</h2>
+          <span className="text-lg text-gray-400 block mt-2">
+            Da click sobre alguna de las siguientes redes sociales para contactarnos        
+          </span>
         </div>
 
-        {/* Fila inferior */}
-        <div className="grid grid-cols-2 gap-10 justify-center items-center max-w-xl mx-auto">
-          <img src="/images/facebook lnk.png" alt="Facebook" className="w-[72px] h-[91px]" />
-          <img src="/images/tiktok lnk.png" alt="TikTok" className="w-[103px] h-[109px]" />
+        {/* Redes sociales */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 justify-center items-center mb-10">
+          {/* Instagram */}
+          <div className="flex flex-col items-center">
+            <a href="https://www.instagram.com/nivu.soft" target="_blank" rel="noopener noreferrer">
+              <img src="/images/ig_logo.png" alt="Instagram" className="w-16 h-16 md:w-[70px] md:h-[70px]" />
+            </a>
+            <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
+          </div>
+
+          {/* WhatsApp */}
+          <div className="flex flex-col items-center">
+            <a href="https://wa.me/593999567465" target="_blank" rel="noopener noreferrer">
+              <img src="/images/wp_logo.png" alt="WhatsApp" className="w-16 h-16 md:w-[70px] md:h-[70px]" />
+            </a>
+            <p className="mt-2 text-sm text-gray-500">0999567465</p>
+          </div>
+
+          {/* Gmail */}
+          <div className="flex flex-col items-center">
+            <a href="mailto:nivusoftware@gmail.com" target="_blank" rel="noopener noreferrer">
+              <img src="/images/mail_logo.png" alt="Gmail" className="w-16 h-16 md:w-[76px] md:h-[66px]" />
+            </a>
+            <p className="mt-2 text-sm text-gray-500">nivusoftware@gmail.com</p>
+          </div>
         </div>
+
+        {/* Segunda fila */}
+        <div className="grid grid-cols-2 gap-10 justify-center items-center">
+          {/* Facebook */}
+          <div className="flex flex-col items-center">
+            <a href="https://www.facebook.com/nivu.soft" target="_blank" rel="noopener noreferrer">
+              <img src="/images/fb_logo.png" alt="Facebook" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
+            </a>
+            <p className="mt-2 text-sm text-gray-500">nivu.soft</p>
+          </div>
+
+          {/* TikTok */}
+          <div className="flex flex-col items-center">
+            <a href="https://www.tiktok.com/@nivu.soft" target="_blank" rel="noopener noreferrer">
+              <img src="/images/tk_logo.png" alt="TikTok" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
+            </a>
+            <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
+          </div>
+        </div>
+
       </div>
     </section>
   );
