@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
- 
-import Main from './pages/Main';
-import Pricing from './pages/Pricing';
-import Services from './pages/Services';
-import NotFound from './pages/NotFound';
-import Maintenance from './pages/Maintenance';
 
+import Main from './Pages/Main';
+import Pricing from './Pages/Pricing';
+import Services from './Pages/Services';
+import NotFound from './Pages/NotFound';
 
 function App() {
   return (
@@ -23,7 +21,6 @@ function App() {
 
         {/* Página 404 como fallback */}
         <Route path="*" element={<NotFound />} />
-
       </Routes>
     </Router>
   );
