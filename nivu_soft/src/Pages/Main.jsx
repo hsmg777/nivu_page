@@ -1,11 +1,13 @@
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero"; // Asegúrate de que el path sea correcto
+import Hero from "../components/Hero"; 
+import About from "../components/About";
 
 function Main() {
   return (
     <>
       <Navbar />
-      <Hero /> {/* Sección Hero destacada */}
+      <Hero /> 
+      <About/>
 
       <div className="min-h-screen bg-gray-100 p-8">
         <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-8">
