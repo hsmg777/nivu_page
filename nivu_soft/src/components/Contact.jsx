@@ -12,12 +12,12 @@ function Contact() {
           </span>
         </div>
 
-        {/* Redes sociales */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-10 justify-center items-center mb-10">
+        {/* Redes sociales en una sola fila */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 justify-items-center items-center mb-10">
           {/* Instagram */}
           <div className="flex flex-col items-center">
             <a href="https://www.instagram.com/nivu.soft" target="_blank" rel="noopener noreferrer">
-              <img src="/images/ig_logo.png" alt="Instagram" className="w-16 h-16 md:w-[70px] md:h-[70px]" />
+              <img src="/images/ig_logo.png" alt="Instagram" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
             </a>
             <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
           </div>
@@ -25,7 +25,7 @@ function Contact() {
           {/* WhatsApp */}
           <div className="flex flex-col items-center">
             <a href="https://wa.me/593999567465" target="_blank" rel="noopener noreferrer">
-              <img src="/images/wp_logo.png" alt="WhatsApp" className="w-16 h-16 md:w-[70px] md:h-[70px]" />
+              <img src="/images/wp_logo.png" alt="WhatsApp" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
             </a>
             <p className="mt-2 text-sm text-gray-500">0999567465</p>
           </div>
@@ -33,14 +33,11 @@ function Contact() {
           {/* Gmail */}
           <div className="flex flex-col items-center">
             <a href="mailto:nivusoftware@gmail.com" target="_blank" rel="noopener noreferrer">
-              <img src="/images/mail_logo.png" alt="Gmail" className="w-16 h-16 md:w-[76px] md:h-[66px]" />
+              <img src="/images/mail_logo.png" alt="Gmail" className="w-14 h-14 md:w-[66px] md:h-[56px]" />
             </a>
             <p className="mt-2 text-sm text-gray-500">nivusoftware@gmail.com</p>
           </div>
-        </div>
 
-        {/* Segunda fila */}
-        <div className="grid grid-cols-2 gap-10 justify-center items-center">
           {/* Facebook */}
           <div className="flex flex-col items-center">
             <a href="https://www.facebook.com/nivu.soft" target="_blank" rel="noopener noreferrer">
@@ -57,7 +54,6 @@ function Contact() {
             <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ export default function Hero() {
     <section className="hero-section min-h-screen pt-32" id="inicio">
       <div className="hero-content">
         <h1 className="hero-title">Crea tu<br />próximo sitio web</h1>
-        <button className="hero-button">🖥️ Agenda tu demo</button>
+        <button className="hero-button">🖥️ Agenda una demostración</button>
       </div>
 
       <div className="hero-examples">
