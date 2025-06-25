@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
+
 
 export default function About() {
   return (
@@ -21,11 +23,15 @@ export default function About() {
         <p className="text-lg text-gray-700 leading-relaxed mb-8">
           En <strong className="text-[#071952]">Nivu Soft</strong> creamos soluciones digitales a medida
           para potenciar tu negocio. Combinamos ingeniería y diseño moderno para
-          desarrollar sitios rápidos, únicos y funcionales, sin plantillas genéricas.
+          desarrollar sitios rápidos, únicos y funcionales.
         </p>
-        <button className="bg-[#071952] text-white py-3 px-6 rounded-xl font-semibold text-base hover:bg-[#19376d] transition duration-300">
+        <Link
+          to="/aboutpage"
+          className="bg-[#071952] text-white py-3 px-6 rounded-xl font-semibold text-base hover:bg-[#19376d] transition duration-300 inline-block"
+        >
           💡 Conoce más
-        </button>
+        </Link>
+
       </motion.div>
 
       <motion.div

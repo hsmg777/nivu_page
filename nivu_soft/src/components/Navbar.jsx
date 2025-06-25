@@ -45,6 +45,7 @@ export default function Navbar() {
           <li><a href="#portafolio" onClick={handleNavClick} className="hover:underline">Portafolio</a></li>
           <li><a href="#testimonios" onClick={handleNavClick} className="hover:underline">Testimonios</a></li>
           <li><a href="#contacto" onClick={handleNavClick} className="hover:underline">Contacto</a></li>
+          <li><a href="/pricing" onClick={handleNavClick} className="hover:underline">Precios</a></li>
 
           <li className="relative dropdown-hover">
             <span className="hover:underline cursor-pointer flex items-center">
