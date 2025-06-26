@@ -1,6 +1,5 @@
 import React from 'react';
-import "keen-slider/styles.css";
-import { useKeenSlider } from 'keen-slider/react';
+import '../css/carousel.css';
 
 const technologies = [
   { name: 'React', logo: '/images/react.png' },
@@ -15,33 +14,22 @@ const technologies = [
 ];
 
 export default function TechCarousel() {
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-    mode: 'free-snap',
-    slides: {
-      perView: 3,
-      spacing: 15,
-    },
-    breakpoints: {
-      '(min-width: 768px)': {
-        slides: { perView: 5, spacing: 20 },
-      },
-    },
-  });
-
   return (
-    <section className="mb-10">
-      <h2 className="text-2xl font-bold text-center text-[#000] mb-6">TECNOLOGÍAS QUE MANEJAMOS</h2>
+    <section className="mb-16 px-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-[#002b62] mb-10 tracking-tight">
+        Tecnologías que manejamos
+      </h2>
 
-      <div className="bg-[#fcf9f9] p-6 rounded-lg shadow-md">
-        <div ref={sliderRef} className="keen-slider">
-          {technologies.map((tech, index) => (
-            <div
-              key={index}
-              className="keen-slider__slide bg-white rounded-xl shadow flex flex-col items-center justify-center p-4"
-            >
-              <img src={tech.logo} alt={tech.name} className="w-16 h-16 object-contain mb-2" />
-              <span className="text-[#002b62] font-medium text-sm">{tech.name}</span>
+      <div className="carousel-wrapper">
+        <div className="carousel-track">
+          {[...technologies, ...technologies].map((tech, index) => (
+            <div key={index} className="carousel-slide">
+              <img
+                src={tech.logo}
+                alt={tech.name}
+                className="w-16 h-16 object-contain mb-2"
+              />
+              <p className="text-indigo-900 font-semibold">{tech.name}</p>
             </div>
           ))}
         </div>

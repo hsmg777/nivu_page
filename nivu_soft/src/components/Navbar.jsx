@@ -55,8 +55,12 @@ export default function Navbar() {
               </svg>
             </span>
             <ul className="dropdown-content">
-              <li><a href="/servicios/web">Desarrollo Web</a></li>
-              <li><a href="/servicios/sistemas">Sistemas a medida</a></li>
+              <li><a href="/services">Sitios web</a></li>
+              <li><a href="/services">Apps web</a></li>
+              <li><a href="/services">Apps móviles</a></li>
+              <li><a href="/services">Sistemas SaaS</a></li>
+              <li><a href="/services">Automatización e Integraciones con IA</a></li>
+              <li><a href="/services">Soporte y Mantenimiento</a></li>
             </ul>
           </li>
         </ul>

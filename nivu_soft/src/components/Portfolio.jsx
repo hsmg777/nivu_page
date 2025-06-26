@@ -1,41 +1,87 @@
+import React from 'react';
+import '../css/Portafolio.css'; // Importamos el CSS externo
+
 function Portfolio() {
   const proyectos = [
     {
-      nombre: 'Proyecto 1',
-      descripcion: 'Descripción corta',
-      imagen: 'https://via.placeholder.com/390x312?text=Proyecto+1',
+      nombre: 'Teramont',
+      descripcion: (
+        <>
+          Sistema web desarrollado para Teramont Host, una empresa de servicios de hosting.<br />
+          El proyecto permite mostrar sus productos, planes personalizados y paneles de administración<br />
+          adaptados a cada tipo de servicio.<br />
+          La plataforma fue diseñada para destacar la marca, facilitar la gestión de clientes<br />
+          y presentar sus soluciones tecnológicas de forma clara y profesional.
+        </>
+      ),
+      imagen: '/images/teramont.png',
     },
     {
-      nombre: 'Proyecto 2',
-      descripcion: 'Descripción corta',
-      imagen: 'https://via.placeholder.com/390x312?text=Proyecto+2',
+      nombre: 'Bee Concert Club',
+      descripcion: (
+        <>
+          Bee Concert Club es un sistema inteligente para la discoteca de Quito que digitaliza las reservas con códigos QR,<br />
+          gestionados desde un panel administrativo. Permite aprobar reservas, enviar notificaciones por correo<br />
+          y publicar fotos o eventos, optimizando así la experiencia del club.
+        </>
+      ),
+      imagen: '/images/beeclub.jpeg',
     },
     {
-      nombre: 'Proyecto 3',
+      nombre: 'Watones',
+      descripcion: (
+        <>
+          Sitio web creado para Watones Network, una comunidad de servidores Minecraft.<br />
+          El sistema presenta información clave sobre sus modalidades de juego, rangos VIP, tienda en línea,<br />
+          y enlaces de acceso.<br />
+          Fue desarrollado con un enfoque visual atractivo y funcional,<br />
+          orientado a mejorar la experiencia de sus jugadores y facilitar el crecimiento de la red.
+        </>
+      ),
+      imagen: '/images/watones.png',
+    },
+    {
+      nombre: 'SysByte',
+      descripcion: (
+        <>
+          SysByte es un sistema integral diseñado para productores agrícolas que permite registrar cosechas,<br />
+          gestionar stock de champiñones, controlar ingresos, gastos y ventas,<br />
+          y generar alertas en tiempo real cuando el inventario está bajo.<br />
+          Optimiza la gestión operativa y financiera de forma eficiente y segura.
+        </>
+      ),
+      imagen: '/images/sysbyte.jpeg',
+    },
+    {
+      nombre: 'Magic Water',
       descripcion: 'Descripción corta',
-      imagen: 'https://via.placeholder.com/390x312?text=Proyecto+3',
+      imagen: '/images/magicwater.jpeg',
+    },
+    {
+      nombre: 'Infinity Water',
+      descripcion: 'Descripción corta',
+      imagen: '/images/infiniwater.jpeg',
     },
   ];
 
   return (
-    <section className="bg-white py-16" id="portafolio">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-12 text-blue-900">Portafolio</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {proyectos.map((proyecto, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <img
-                src={proyecto.imagen}
-                alt={proyecto.nombre}
-                className="rounded-lg shadow-md w-[390px] h-[312px] object-cover"
-              />
-              <h3 className="mt-4 font-semibold text-lg text-gray-800">
-                {proyecto.nombre}
-              </h3>
-              <p className="text-gray-500 text-sm">{proyecto.descripcion}</p>
-            </div>
-          ))}
+    <section className="portfolio-section" id="portafolio">
+      <div className="portfolio-container">
+        <h2 className="portfolio-title">Portafolio</h2>
+        <div className="carousel-wrapper">
+          <div className="carousel">
+            {proyectos.map((proyecto, index) => (
+              <div key={index} className="carousel-item">
+                <img
+                  src={proyecto.imagen}
+                  alt={proyecto.nombre}
+                  className="carousel-img"
+                />
+                <h3 className="carousel-name">{proyecto.nombre}</h3>
+                <p className="carousel-desc">{proyecto.descripcion}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
