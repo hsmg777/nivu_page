@@ -51,7 +51,7 @@ function Contact() {
             <a href="https://www.tiktok.com/@nivusoft" target="_blank" rel="noopener noreferrer">
               <img src="/images/tk_logo.png" alt="TikTok" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
             </a>
-            <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
+            <p className="mt-2 text-sm text-gray-500">@nivusoft</p>
           </div>
         </div>
       </div>
