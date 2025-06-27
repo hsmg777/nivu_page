@@ -166,7 +166,7 @@ export default function Services() {
               👉 ¿Te interesa uno de estos servicios?
             </h3>
             <p className="text-gray-100 mb-6">
-              Mira nuestros planes mensuales o agenda una demo sin compromiso.
+              Mira nuestros planes o agenda una demo sin compromiso.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
