@@ -19,10 +19,12 @@ export default function AboutPage() {
             className="mx-auto w-32 h-32 object-cover rounded-full mb-4" 
           />
           <h3 className="text-xl font-semibold text-[#002b62]">Hayland</h3>
-          <p className="text-sm text-[#002b62] mb-1">CEO/CTO - Ing de Software</p>
+          <p className="text-sm text-[#002b62] mb-1">Co-fundador NuviSoft - CTO - Ing de Software</p>
           <p className="text-gray-700 text-sm mt-2 leading-relaxed">
-            Desarrollador full stack con gran sensibilidad visual. 
-            Combina código y diseño para entregar interfaces fluidas, amigables y modernas.
+            Hayland combina su formación como ingeniero de software con una mentalidad creativa <br/>e  innovadora. 
+            Experto en arquitectura y desarrollo full-stack con tecnologías como Laravel, React y Flask,  ha liderado proyectos que integran automatización, inteligencia artificial y diseño de alto impacto.
+
+            Su enfoque no es solo construir software, sino crear soluciones a medida que resuelvan problemas reales y escalen con tu negocio.
           </p>
         </div>
 
@@ -34,10 +36,13 @@ export default function AboutPage() {
             className="mx-auto w-32 h-32 object-cover rounded-full mb-4" 
           />
           <h3 className="text-xl font-semibold text-[#002b62]">Emilio</h3>
-          <p className="text-sm text-[#002b62] mb-1">COO - Ing. en Sistemas</p>
+          <p className="text-sm text-[#002b62] mb-1">Co-fundador NuviSoft - CEO - Ing. en Software</p>
           <p className="text-gray-700 text-sm mt-2 leading-relaxed">
-            Apasionado por la tecnología y la eficiencia operativa. 
-            Lidera con visión estratégica y un enfoque humano, garantizando excelencia en cada proyecto.
+            Emilio es un Ingeniero de Software con una fuerte orientación al análisis estratégico y a la ejecución operativa.
+            Posee una mentalidad emprendedora y resolutiva, capaz de transformar ideas en soluciones digitales robustas.
+            Con experiencia en arquitectura de sistemas, metodologías ágiles y desarrollo full-stack,
+
+            Ha trabajado en plataformas web, apps móviles y sistemas empresariales, siempre priorizando la escalabilidad y la experiencia del usuario.
           </p>
         </div>
       </div>

@@ -21,10 +21,12 @@ function Footer() {
           <div className="relative z-10">
             <h3 className="text-lg font-bold mb-4">Servicios</h3>
             <ul className="space-y-1">
-              <li>Web Corporativa</li>
-              <li>Landing Page con CTA</li>
-              <li>Sistema con login/admin</li>
-              <li>MVP para Startups</li>
+              <li><a href="/services" className="hover:underline">Páginas web</a></li>
+              <li><a href="/services" className="hover:underline">Aplicaciones web</a></li>
+              <li><a href="/services" className="hover:underline">Aplicaciones móviles y de escritorio</a></li>
+              <li><a href="/services" className="hover:underline">Sistemas SaaS</a></li>
+              <li><a href="/services" className="hover:underline">Automatización e Integraciones con IA</a></li>
+              <li><a href="/services" className="hover:underline">Soporte, Asesoría y Mantenimiento</a></li>
             </ul>
           </div>
         </div>
@@ -35,9 +37,11 @@ function Footer() {
           <div className="relative z-10">
             <h3 className="text-lg font-bold mb-4">Precios</h3>
             <ul className="space-y-1">
-              <li>Esencial: Emprendedores</li>
-              <li>Negocios: Empresas</li>
-              <li>Avanzado: Startups/Sistemas</li>
+              <li> <a href="/pricing" className="hover:underline">Web Básica</a></li>
+              <li> <a href="/pricing" className="hover:underline">Web Profesional</a></li>
+              <li> <a href="/pricing" className="hover:underline">Web Avanzada</a></li>
+              <li> <a href="/pricing" className="hover:underline">Aplicaciones Escritorio / Móviles</a></li>
+              <li> <a href="/pricing" className="hover:underline">Sistemas SaaS</a></li>
             </ul>
           </div>
         </div>

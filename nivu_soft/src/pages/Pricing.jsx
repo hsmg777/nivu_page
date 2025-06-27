@@ -39,7 +39,7 @@ export default function PricingPage() {
       button: 'Solicitar este plan',
     },
     {
-      title: '🛒 Web Avanzada / Ecommerce',
+      title: '🛒 Applicación Web Avanzada / Ecommerce',
       price: 'Desde $350 USD',
       description: 'Ideal para empresas que necesitan catálogo, gestión interna o tienda online.',
       features: [
@@ -56,7 +56,7 @@ export default function PricingPage() {
       button: 'Cotizar este plan',
     },
     {
-      title: '📱 Aplicaciones Web / Móviles',
+      title: '📱 Aplicaciones Escritorio / Móviles',
       price: 'Desde $400 USD',
       description: 'Para empresas o startups que requieren sistemas internos, dashboards o apps móviles.',
       features: [

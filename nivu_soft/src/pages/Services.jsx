@@ -8,7 +8,7 @@ export default function Services() {
   const servicios = [
     {
       icon: '🖥',
-      title: 'Sitios Web Corporativos',
+      title: 'Páginas Web Corporativas',
       description: 'Creamos páginas web personalizadas con diseño moderno, responsive y optimizadas para buscadores (SEO). Ideales para negocios que necesitan mostrar sus servicios, atraer clientes y tener una presencia sólida en línea.',
       bullets: [
         'Posicionamiento en Google',
@@ -29,7 +29,7 @@ export default function Services() {
     },
     {
       icon: '📱',
-      title: 'Aplicaciones Móviles',
+      title: 'Aplicaciones Móviles y Escritorio',
       description: 'Creamos apps móviles nativas o híbridas que permiten a tus clientes interactuar con tus productos o servicios desde su celular. Perfectas para pedidos, reservas, notificaciones, ventas, delivery, gestión de clientes, etc.',
       bullets: [
         'Experiencia directa en el bolsillo del cliente',

@@ -54,12 +54,12 @@ function Portfolio() {
     },
     {
       nombre: 'Magic Water',
-      descripcion: 'Descripción corta',
+      descripcion: (<>Sistema web desarrollado para Magic Water, una empresa ubicada en Florida especializada en servicios de plomería, <br />soluciones hidráulicas y mantenimiento integral de sistemas de agua residenciales y comerciales. <br />El sitio fue diseñado para comunicar de forma clara sus servicios,<br /> agendar visitas técnicas y facilitar el contacto con clientes que enfrentan problemas como fugas, filtraciones o instalaciones complejas.</>),
       imagen: '/images/magicwater.jpeg',
     },
     {
       nombre: 'Infinity Water',
-      descripcion: 'Descripción corta',
+      descripcion:(<>Sitio web corporativo creado para Infinity Water, empresa dedicada a la fabricación y comercialización de <br/>filtros y sistemas de purificación de agua en Florida. La plataforma expone los beneficios de sus productos frente a los problemas comunes<br/> del agua en la región (pozos contaminados, acumulación de minerales, sistemas sépticos), <br/>y permite a los clientes conocer, cotizar y adquirir soluciones efectivas para el hogar.</>),
       imagen: '/images/infiniwater.jpeg',
     },
   ];
