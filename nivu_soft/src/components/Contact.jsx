@@ -40,15 +40,15 @@ function Contact() {
 
           {/* Facebook */}
           <div className="flex flex-col items-center">
-            <a href="https://www.facebook.com/nivu.soft" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/people/Nivu-Software/61577565552467/?mibextid=wwXIfr&rdid=taUYj51kiZBfUvHD&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1T1JTXHYcn%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer">
               <img src="/images/fb_logo.png" alt="Facebook" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
             </a>
-            <p className="mt-2 text-sm text-gray-500">nivu.soft</p>
+            <p className="mt-2 text-sm text-gray-500">nivusoftware</p>
           </div>
 
           {/* TikTok */}
           <div className="flex flex-col items-center">
-            <a href="https://www.tiktok.com/@nivu.soft" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.tiktok.com/@nivusoft" target="_blank" rel="noopener noreferrer">
               <img src="/images/tk_logo.png" alt="TikTok" className="w-14 h-14 md:w-[70px] md:h-[70px]" />
             </a>
             <p className="mt-2 text-sm text-gray-500">@nivu.soft</p>
