@@ -50,7 +50,7 @@ function Footer() {
       {/* Texto inferior grande y centrado */}
       <div className="mt-12 text-center px-4">
         <p className="text-base md:text-lg font-medium text-white">
-          Nivu Soft © 2025 | Desarrollo web a medida
+          Nivu Soft © 2025 | Desarrollo de software a medida
         </p>
       </div>
     </footer>
