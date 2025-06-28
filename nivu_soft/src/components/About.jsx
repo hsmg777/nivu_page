@@ -48,7 +48,7 @@ export default function About() {
             className="w-52 h-52 rounded-full mx-auto shadow-xl object-cover"
           />
           <h3 className="text-lg font-semibold text-[#071952] mt-4">Emilio Albornoz</h3>
-          <p className="text-sm text-[#071952]">CEO / CTO</p>
+          <p className="text-sm text-[#071952]">Co-Fundador - CEO </p>
         </div>
 
         <div className="text-center">
@@ -58,7 +58,7 @@ export default function About() {
             className="w-52 h-52 rounded-full mx-auto shadow-xl object-cover"
           />
           <h3 className="text-lg font-semibold text-[#071952] mt-4">Hayland Montalvo</h3>
-          <p className="text-sm text-[#071952]">CEO / CTO</p>
+          <p className="text-sm text-[#071952]">Co-Fundador - CTO</p>
         </div>
       </motion.div>
     </motion.section>
