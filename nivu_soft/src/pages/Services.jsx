@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import bgImage from '../../public/images/bg_services.png'; 
 import '../css/Service.css'
 
-
 export default function Services() {
   const servicios = [
     {
@@ -104,7 +103,6 @@ export default function Services() {
           </p>
         </motion.div>
 
-
         {/* Cards animadas en grupo */}
         <motion.div
           className="grid gap-12 md:grid-cols-3 text-left"
@@ -183,11 +181,30 @@ export default function Services() {
               >
                 Hablemos por WhatsApp
               </a>
-             
             </div>
           </div>
         </motion.div>
 
+        {/* Botón de regresar al inicio con texto "Inicio" y nueva estética */}
+        <a
+          href="/" // Redirige a la página principal
+          className="fixed top-4 left-4 text-lg text-white bg-blue-600 p-4 rounded-xl shadow-lg flex items-center space-x-2 hover:bg-blue-500 transition-all duration-300"
+          aria-label="Volver al inicio"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-5 h-5"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M17 11l-4-4m0 0l-4 4m4-4v12" />
+          </svg>
+          <span className="ml-2">Inicio</span>
+        </a>
       </div>
     </section>
   );

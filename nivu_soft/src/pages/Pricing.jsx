@@ -92,6 +92,27 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#00aaff] via-[#b0e6ff] to-[#e6f8ff] py-8 px-4">
+      {/* Botón para Volver al Inicio */}
+      <a
+        href="/" // Redirige a la página principal
+        className="absolute top-6 left-6 text-lg text-[#ffffff] bg-[#00aaff] hover:bg-[#007acc] p-3 rounded-xl shadow-lg flex items-center space-x-2 transition-all duration-300"
+        aria-label="Volver al inicio"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="w-5 h-5"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M17 11l-4-4m0 0l-4 4m4-4v12" />
+        </svg>
+        <span className="ml-2">Volver al Inicio</span>
+      </a>
+
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-[#ffffff]">Planes y Precios</h2>
         <p className="text-[#ffffff] mt-4">Elige el plan que mejor se adapte a tu negocio. Todos nuestros desarrollos son 100% personalizados.</p>
