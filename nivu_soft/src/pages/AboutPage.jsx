@@ -19,7 +19,7 @@ export default function AboutPage() {
             className="mx-auto w-32 h-32 object-cover rounded-full mb-4" 
           />
           <h3 className="text-xl font-semibold text-[#002b62]">Hayland</h3>
-          <p className="text-sm text-[#002b62] mb-1">Co-fundador NuviSoft - CTO - Ing de Software</p>
+          <p className="text-sm text-[#002b62] mb-1">Co-fundador NivuSoft - CTO - Ing de Software</p>
           <p className="text-gray-700 text-sm mt-2 leading-relaxed">
             Hayland combina su formación como ingeniero de software con una mentalidad creativa <br/>e  innovadora. 
             Experto en arquitectura y desarrollo full-stack con tecnologías como Laravel, React y Flask,  ha liderado proyectos que integran automatización, inteligencia artificial y diseño de alto impacto.
@@ -36,7 +36,7 @@ export default function AboutPage() {
             className="mx-auto w-32 h-32 object-cover rounded-full mb-4" 
           />
           <h3 className="text-xl font-semibold text-[#002b62]">Emilio</h3>
-          <p className="text-sm text-[#002b62] mb-1">Co-fundador NuviSoft - CEO - Ing. en Software</p>
+          <p className="text-sm text-[#002b62] mb-1">Co-fundador NivuSoft - CEO - Ing. en Software</p>
           <p className="text-gray-700 text-sm mt-2 leading-relaxed">
             Emilio es un Ingeniero de Software con una fuerte orientación al análisis estratégico y a la ejecución operativa.
             Posee una mentalidad emprendedora y resolutiva, capaz de transformar ideas en soluciones digitales robustas.

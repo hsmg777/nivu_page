@@ -2,19 +2,20 @@
   "name": "nivu_soft",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "npx vite --host",
     "build": "npx vite build",
-    "lint": "npx eslint .",
-    "preview": "npx vite preview"
+    "preview": "npx vite preview",
+    "start": "node index.js"
   },
+
   "dependencies": {
     "framer-motion": "^12.19.1",
     "keen-slider": "^6.8.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
+    "serve": "^14.2.4",
     "tailwind-scrollbar-hide": "^4.0.0"
   },
   "devDependencies": {

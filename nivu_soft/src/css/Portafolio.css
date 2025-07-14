@@ -68,3 +68,37 @@
   font-size: 0.875rem;
   color: #666;
 }
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .portfolio-section {
+    padding: 2rem 1rem;
+  }
+
+  .portfolio-title {
+    font-size: 1.5rem;
+  }
+
+  .carousel {
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .carousel-item {
+    min-width: 90%;
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .carousel-img {
+    height: 200px;
+  }
+
+  .carousel-name {
+    font-size: 1rem;
+  }
+
+  .carousel-desc {
+    font-size: 0.85rem;
+  }
+}

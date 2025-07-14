@@ -7,11 +7,9 @@ function Portfolio() {
       nombre: 'Teramont',
       descripcion: (
         <>
-          Sistema web desarrollado para Teramont Host, una empresa de servicios de hosting.<br />
+          Colaboración en la plataforma digital de Teramont Host, una empresa de servicios de hosting.<br />
           El proyecto permite mostrar sus productos, planes personalizados y paneles de administración<br />
           adaptados a cada tipo de servicio.<br />
-          La plataforma fue diseñada para destacar la marca, facilitar la gestión de clientes<br />
-          y presentar sus soluciones tecnológicas de forma clara y profesional.
         </>
       ),
       imagen: '/images/teramont.png',
