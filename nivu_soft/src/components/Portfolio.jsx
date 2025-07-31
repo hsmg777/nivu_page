@@ -4,6 +4,15 @@ import '../css/Portafolio.css'; // Importamos el CSS externo
 function Portfolio() {
   const proyectos = [
     {
+      nombre: 'Vida Buena Ec',
+      descripcion: (
+        <>
+          Desarrollo y puesta en producción de la pagina web para la compañia de medicina prepagada, tiene notificaciones <br /> automaticasy funcionalidades hechas a medida de la empresa.
+        </>
+      ),
+      imagen: '/images/vidabuena.png',
+    },
+    {
       nombre: 'Teramont',
       descripcion: (
         <>
