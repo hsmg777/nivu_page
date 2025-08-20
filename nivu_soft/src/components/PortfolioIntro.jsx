@@ -24,11 +24,12 @@ export default function PortfolioIntro() {
     // === Parámetros responsivos ===
     const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
     const START_SCALE_DESKTOP = 2.0;
-    const START_SCALE_MOBILE  = 1.6;     // ⬅️ más pequeño en móvil
-    const END_SCALE           = 1.0;     // match exacto con el dummy final
+    const START_SCALE_MOBILE  = 1.6;
+    const END_SCALE           = 1.0;
 
-    // Delays de aparición (un poco más tarde en móvil)
-    const DELAY_1_DESKTOP = 0.40, DELAY_2_DESKTOP = 0.55, DELAY_3_DESKTOP = 0.70;
+    // Delays (ligeramente antes el caption en desktop para que no se pierda)
+// Delays (desktop un poco más tarde)
+    const DELAY_1_DESKTOP = 0.40, DELAY_2_DESKTOP = 0.55, DELAY_3_DESKTOP = 0.72;
     const DELAY_1_MOBILE  = 0.48, DELAY_2_MOBILE  = 0.63, DELAY_3_MOBILE  = 0.78;
 
     [l1, l2, cap].forEach(el => {
@@ -75,7 +76,6 @@ export default function PortfolioIntro() {
         title.style.transformOrigin = "left top";
         title.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
 
-        // Aparición más tardía en móvil
         const [d1, d2, d3] = isDesktop()
           ? [DELAY_1_DESKTOP, DELAY_2_DESKTOP, DELAY_3_DESKTOP]
           : [DELAY_1_MOBILE , DELAY_2_MOBILE , DELAY_3_MOBILE ];
@@ -117,7 +117,7 @@ export default function PortfolioIntro() {
             leading-none tracking-tight 
             text-[#05b7ff] 
             select-none
-        "
+          "
           style={{ transform: "scale(6)" }}
         >
           PORTAFOLIO
@@ -125,31 +125,31 @@ export default function PortfolioIntro() {
 
         {/* Layout final */}
         <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-12 items-start px-6 md:px-12 pt-24">
-          {/* Dummy final (define tamaño final del PORTAFOLIO) */}
           <div className="md:col-span-7">
             <h3
               ref={finalRef}
               className="
-                    pointer-events-none 
-                    text-[clamp(1.2rem,5vw,2.2rem)]
-                    md:text-[5.6rem] 
-                    font-extrabold 
-                    leading-tight 
-                    text-[#05b7ff] 
-                    opacity-0
-                "
+                pointer-events-none 
+                text-[clamp(1.2rem,5vw,2.2rem)]
+                md:text-[5.6rem] 
+                font-extrabold 
+                leading-tight 
+                text-[#05b7ff] 
+                opacity-0
+              "
             >
               PORTAFOLIO
             </h3>
           </div>
 
-          {/* Frases pegadas a la derecha sin cambiar altura */}
+          {/* Frases (más arriba en desktop) */}
           <div
             className="
-              md:col-start-8 md:col-span-5
-              md:justify-self-end md:text-right md:pr-12
-              md:max-w-[34rem]
-              mt-80 md:mt-[32rem]
+                 md:col-start-8 md:col-span-5
+                md:justify-self-end md:text-right md:pr-12
+                md:max-w-[34rem]
+                mt-80
+                md:mt-[34vh] lg:mt-[38vh] xl:mt-[40vh] 2xl:mt-[42vh]
             "
           >
             <p ref={line1Ref} className="text-2xl md:text-4xl font-extrabold text-blue-900 opacity-0">
@@ -165,7 +165,6 @@ export default function PortfolioIntro() {
         </div>
       </div>
 
-      {/* Respiro antes del grid real de proyectos */}
       <div className="h-[20vh]" />
     </section>
   );

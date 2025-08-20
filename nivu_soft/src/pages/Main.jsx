@@ -13,8 +13,8 @@ function Main() {
     <>
       <Navbar />
       <div id="inicio" className="scroll-mt-32"><Hero /></div>
-      <div id="portafolio-intro" className="scroll-mt-32"><PortfolioIntro /></div>
-      <div id="portafolio" className="scroll-mt-32"><Portfolio /></div>
+      <div id="portafolio" className="scroll-mt-32"><PortfolioIntro /></div>
+      <div  className="scroll-mt-32"><Portfolio /></div>
 
       <div id="contacto" className="scroll-mt-32"><Contact /></div>
       <div id="nosotros" className="scroll-mt-32"><About /></div>
