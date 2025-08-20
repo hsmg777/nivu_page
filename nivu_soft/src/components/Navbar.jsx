@@ -1,70 +1,165 @@
-import { useState } from "react";
-import '../css/Navbar.css';
+import { useEffect, useRef, useState } from "react";
+
+const MENU_ID = "nav-overlay";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const hamburgerRef = useRef(null);
+  const closeRef = useRef(null);
 
-  const handleNavClick = () => {
-    setMenuOpen(false); // Cierra el menú móvil después de hacer clic
-  };
+  // Bloquear/desbloquear scroll
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = prev);
+  }, [open]);
+
+  // Foco accesible
+  useEffect(() => {
+    if (open) setTimeout(() => closeRef.current?.focus?.(), 0);
+    else setTimeout(() => hamburgerRef.current?.focus?.(), 0);
+  }, [open]);
+
+  // Cerrar con ESC
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const handleGo = () => setOpen(false);
 
   return (
-    <nav className="fixed top-4 left-4 right-4 z-50 bg-[#071952] text-white rounded-full px-8 py-2 shadow-md backdrop-blur-sm scroll-smooth">
-      <div className="flex items-center justify-between w-full">
+    <>
+      {/* Barra fija SIN fondo */}
+      <nav className="fixed top-4 left-4 right-4 z-[60]">
+        <div className="flex items-center justify-between px-6 md:px-10">
+          <a href="#inicio" onClick={handleGo} className="flex items-center gap-3">
+            <img
+              src="/images/logo_nube.png"
+              alt="Nivu Soft"
+              className="h-16 w-auto md:h-16"
+            />
+            {/* Oculto el texto para dejar solo el ícono */}
+            <span className="sr-only">Nivu Soft</span>
+          </a>
 
-        {/* Logo */}
-        <a href="#inicio" onClick={handleNavClick} className="flex items-center gap-2">
-          <img src="/images/logo_nube.png" alt="Nuvi Soft" className="h-10 md:h-12 w-auto object-contain" />
-          <span className="text-white font-semibold text-lg md:text-xl">Nivu Soft</span>
-        </a>
-
-        {/* Botón hamburguesa */}
-        <button
-          className="md:hidden text-white text-2xl z-50"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
-
-        {/* Menú de navegación */}
-        <ul className={`
-          ${menuOpen ? "flex" : "hidden"}
-          md:flex flex-col md:flex-row
-          absolute md:static
-          top-20 md:top-0 left-0 right-0
-          bg-[#071952] md:bg-transparent
-          rounded-md md:rounded-none
-          p-4 md:p-0
-          text-base md:text-lg font-medium
-          z-40 md:z-auto
-          gap-6 md:gap-14
-          navbar-center-md
-        `}>
-          <li><a href="#inicio" onClick={handleNavClick} className="hover:underline">Inicio</a></li>
-          <li><a href="#nosotros" onClick={handleNavClick} className="hover:underline">Nosotros</a></li>
-          <li><a href="#portafolio" onClick={handleNavClick} className="hover:underline">Portafolio</a></li>
-          <li><a href="#testimonios" onClick={handleNavClick} className="hover:underline">Testimonios</a></li>
-          <li><a href="#contacto" onClick={handleNavClick} className="hover:underline">Contacto</a></li>
-          <li><a href="/pricing" onClick={handleNavClick} className="hover:underline">Precios</a></li>
-
-          <li className="relative dropdown-hover">
-            <span className="hover:underline cursor-pointer flex items-center">
-              Servicios
-              <svg className="ml-1 h-4 w-4 text-cyan-100 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.27a.75.75 0 01-.02-1.06z" clipRule="evenodd" />
-              </svg>
+          {/* Botón hamburguesa SIN fondo (grande) */}
+          <button
+            ref={(el) => (hamburgerRef.current = el)}
+            aria-controls={MENU_ID}
+            aria-expanded={open}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
+            className={[
+              "inline-flex h-14 w-14 items-center justify-center rounded-md outline-none",
+              "focus-visible:ring-2 focus-visible:ring-cyan-400",
+              open ? "opacity-0 pointer-events-none" : "opacity-100",
+            ].join(" ")}
+          >
+            {/* Tres barras blancas más gruesas */}
+            <span className="relative block h-9 w-10">
+              <span
+                className={[
+                  "absolute left-0 right-0 top-0 h-1 bg-white transition-transform",
+                  open ? "translate-y-3 rotate-45" : "",
+                ].join(" ")}
+              />
+              <span
+                className={[
+                  "absolute left-0 right-0 top-1/2 h-1 -translate-y-1/2 bg-white transition-opacity",
+                  open ? "opacity-0" : "opacity-100",
+                ].join(" ")}
+              />
+              <span
+                className={[
+                  "absolute left-0 right-0 bottom-0 h-1 bg-white transition-transform",
+                  open ? "-translate-y-3 -rotate-45" : "",
+                ].join(" ")}
+              />
             </span>
-            <ul className="dropdown-content">
-              <li><a href="/services">Sitios web</a></li>
-              <li><a href="/services">Apps web</a></li>
-              <li><a href="/services">Apps móviles</a></li>
-              <li><a href="/services">Sistemas SaaS</a></li>
-              <li><a href="/services">Automatización e Integraciones con IA</a></li>
-              <li><a href="/services">Soporte y Mantenimiento</a></li>
-            </ul>
-          </li>
-        </ul>
+          </button>
+        </div>
+      </nav>
+
+      {/* OVERLAY FULL-SCREEN */}
+      <div
+        id={MENU_ID}
+        role="dialog"
+        aria-modal="true"
+        className={[
+          "fixed inset-0 z-[80]",
+          "transition-[opacity,visibility] duration-300",
+          open ? "visible opacity-100" : "invisible opacity-0",
+        ].join(" ")}
+        onClick={() => setOpen(false)}
+      >
+        {/* Imagen de fondo */}
+        <div
+          className={[
+            "absolute inset-0",
+            "bg-[url('/images/menu-bg.jpeg')] bg-cover bg-center",
+            "before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#0a1a5f]/90 before:via-[#0a1a5f]/80 before:to-[#0a1a5f]/80",
+          ].join(" ")}
+          aria-hidden="true"
+        />
+        
+
+        {/* Contenido ocupa TODA la pantalla */}
+        <div
+          className={[
+            "relative flex h-full w-full flex-col",
+            "px-6 sm:px-12 py-10",
+            "motion-safe:transition-transform motion-safe:duration-300",
+            open ? "motion-safe:translate-y-0" : "motion-safe:translate-y-2",
+          ].join(" ")}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Botón cerrar (X) arriba derecha, sin fondo */}
+          <button
+            ref={(el) => (closeRef.current = el)}
+            onClick={() => setOpen(false)}
+            aria-label="Cerrar menú"
+            className="ml-auto inline-flex h-12 w-12 items-center justify-center rounded-md text-white text-2xl outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+          >
+            ×
+          </button>
+
+          {/* Lista enorme, izquierda – ocupa pantalla completa */}
+          <ul className="mt-6 select-none">
+            {[
+              { label: "INICIO", href: "#inicio" },
+              { label: "NOSOTROS", href: "#nosotros" },
+              { label: "PORTAFOLIO", href: "#portafolio" },
+              { label: "CONTACTO", href: "#contacto" },
+              { label: "PRECIOS", href: "/pricing" },
+              { label: "SERVICIOS", href: "/services" },
+            ].map((item, i) => (
+              <li key={item.href} className="overflow-hidden">
+                <a
+                  href={item.href}
+                  onClick={handleGo}
+                  className={[
+                    "block font-extrabold tracking-tight no-underline",
+                    "text-cyan-400 drop-shadow-md",
+                    "text-5xl sm:text-7xl", 
+                    "transition duration-300",
+                    open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
+                    "hover:pl-1 hover:text-cyan-300",
+                  ].join(" ")}
+                  style={{ transitionDelay: `${i * 70}ms` }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-auto text-sm text-white/70">
+            © {new Date().getFullYear()} Nivu Soft — Desarrollo a medida.
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
