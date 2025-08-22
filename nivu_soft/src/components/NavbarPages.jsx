@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const MENU_ID = "nav-overlay";
 
-export default function Navbar() {
+export default function NavbarPages() {
   const [open, setOpen] = useState(false);
   const hamburgerRef = useRef(null);
   const closeRef = useRef(null);
@@ -34,7 +34,7 @@ export default function Navbar() {
       {/* Barra fija SIN fondo */}
       <nav className="fixed top-4 left-4 right-4 z-[60]">
         <div className="flex items-center justify-between px-6 md:px-10">
-          <a href="#inicio" onClick={handleGo} className="flex items-center gap-3">
+          <a href="/" onClick={handleGo} className="flex items-center gap-3">
             <img
               src="/images/logo_nube.png"
               alt="Nivu Soft"
@@ -128,9 +128,9 @@ export default function Navbar() {
           {/* Lista enorme, izquierda – ocupa pantalla completa */}
           <ul className="mt-6 select-none">
             {[
-              { label: "INICIO", href: "#inicio" },
+              { label: "INICIO", href: "/" },
               { label: "NOSOTROS", href: "/about" },
-              { label: "PORTAFOLIO", href: "#portafolio" },
+              { label: "PORTAFOLIO", href: "/#portafolio" },
               { label: "CONTACTO", href: "/contact" },
               { label: "PRECIOS & SERVICIOS", href: "/pricing" },
             ].map((item, i) => (

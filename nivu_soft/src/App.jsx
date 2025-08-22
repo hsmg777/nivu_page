@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Main from './pages/Main';
-import Pricing from './pages/Pricing';
-import Services from './pages/Services';
+import PricingServicesPage from './pages/PricingServices';
 import NotFound from './pages/NotFound';
-import AboutPage from './pages/AboutPage';
+import About from './pages/About';   
+import Contact from './pages/Contact'; 
 
 function App() {
   return (
@@ -13,11 +13,11 @@ function App() {
         
         <Route path="/" element={<Main />} />
 
-        <Route path="/services" element={<Services />} />
+        <Route path="/pricing" element={<PricingServicesPage />} />
 
-        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/about" element={<About />} />
 
-        <Route path="/aboutpage" element={<AboutPage />} />
+        <Route path="/contact" element={<Contact />} />
 
         {/* Página de mantenimiento (opcional activar) */}
         {/* <Route path="*" element={<Maintenance />} /> */}
