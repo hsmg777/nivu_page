@@ -1,23 +1,107 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/logo_nube.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NivuSoft | Desarrollo Web y Apps Personalizadas</title>
-    <meta name="description" content="Creamos páginas web, aplicaciones móviles y sistemas personalizados para empresas. Soluciones digitales seguras y escalables desde Ecuador.">
-    <meta name="keywords" content="desarrollo web, aplicaciones móviles, sistemas a medida, software Ecuador, Nivu Soft">
-    <meta name="robots" content="index, follow" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Nivusoft | Desarrollo de software a medida en Ecuador: Web, Apps y SaaS</title>
+    <meta name="description" content="Agencia de software en Ecuador. Desarrollamos páginas web, aplicaciones móviles y sistemas SaaS a medida con seguridad, escalabilidad y soporte. Solicita una demo." />
 
-    <meta property="og:title" content="Nivu Soft | Expertos en desarrollo de software y apps" />
-    <meta property="og:description" content="Creamos páginas/apps webs, sistemas personalizados para empresas. Pide una demo." />
-    <meta property="og:image" content="https://nivusoftware.com/images/preview.png" />
-    <meta property="og:url" content="https://nivusoftware.com/" />
+    <!-- Canonical y multidioma -->
+    <link rel="canonical" href="https://nivusoftware.com/" />
+    <link rel="alternate" href="https://nivusoftware.com/" hreflang="es-EC" />
+    <link rel="alternate" href="https://nivusoftware.com/" hreflang="es" />
+    <link rel="alternate" href="https://nivusoftware.com/en/" hreflang="en" />
+    <link rel="alternate" href="https://nivusoftware.com/" hreflang="x-default" />
+
+    <!-- Indexación -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Favicon / PWA -->
+    <link rel="icon" href="/images/logo_nube.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Nivussoft" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nivusoftware.com/" />
+    <meta property="og:title" content="Nivusoft | Desarrollo de software a medida: Web, Apps y SaaS" />
+    <meta property="og:description" content="Creamos sitios web, apps móviles y sistemas personalizados para pymes y empresas. Pide una demo." />
+    <meta property="og:image" content="https://nivusoftware.com/images/og/og-image-1200x630.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nivusoft | Desarrollo de software a medida: Web, Apps y SaaS" />
+    <meta name="twitter:description" content="Desarrollo de software personalizado desde Ecuador. Solicita una demo." />
+    <meta name="twitter:image" content="https://nivusoftware.com/images/og/og-image-1200x630.png" />
+    <meta name="twitter:site" content="@TODO_twitter" />
+    <meta name="twitter:creator" content="@TODO_twitter" />
+
+    <link rel="preload" as="image" href="/images/hero/hero_bg.png" imagesrcset="/images/hero/hero_bg-800.jpg 800w, /images/hero/hero_bg-1400.jpg 1400w, /images/hero/hero_bg-2000.jpg 2000w" imagesizes="100vw" fetchpriority="high" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nivusoft",
+      "url": "https://nivusoftware.com/",
+      "logo": "https://nivusoftware.com/images/logo_nube.png",
+      "sameAs": [
+        "https://www.facebook.com/TODO_nivusoft",
+        "https://www.instagram.com/TODO_nivusoft",
+        "https://www.linkedin.com/company/TODO_nivusoft"
+      ],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+593-TO-DO-TELEFONO",
+        "contactType": "customer service",
+        "areaServed": "EC",
+        "availableLanguage": ["es","en"]
+      }]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "url":"https://nivusoftware.com/",
+      "name":"Nivusoft",
+      "potentialAction":{
+        "@type":"SearchAction",
+        "target":"https://nivusoftware.com/buscar?q={search_term_string}",
+        "query-input":"required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ProfessionalService",
+      "name":"Nivusoft",
+      "image":"https://nivusoftware.com/images/og/og-image-1200x630.png",
+      "url":"https://nivusoftware.com/",
+      "telephone":"+593-TO-DO-TELEFONO",
+      "areaServed": ["EC", "LATAM"],
+      "address":{
+        "@type":"PostalAddress",
+        "addressCountry":"EC",
+        "addressLocality":"Quito",
+        "addressRegion":"Pichincha"
+      }
+    }
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

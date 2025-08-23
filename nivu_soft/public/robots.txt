@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nivusoftware.com/sitemap.xml
