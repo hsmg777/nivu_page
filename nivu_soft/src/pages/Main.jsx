@@ -6,6 +6,7 @@ import PortfolioIntro from '../components/PortfolioIntro';
 import Portfolio from '../components/Portfolio';
 import Caption from '../components/Caption';
 import Footer from '../components/Footer';
+import ScrollHint from "../components/ScrollHint";
 
 function useHashScroll() {
   useEffect(() => {
@@ -36,6 +37,12 @@ function Main() {
 
   return (
     <>
+    <ScrollHint
+      pageId="main-v3"             
+      showOncePerSession={false}   
+      hideAfterMs={20000}
+      startListenDelayMs={1000}
+    />
       <Navbar />
       <div id="inicio" className="scroll-mt-32"><Hero /></div>
       <div id="portafolio" className="scroll-mt-32"><PortfolioIntro /></div>
