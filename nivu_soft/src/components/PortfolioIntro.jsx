@@ -9,6 +9,20 @@ export default function PortfolioIntro() {
   const line2Ref   = useRef(null);
   const captionRef = useRef(null);
 
+  // Métricas precalculadas para evitar reflows por frame
+  const metricsRef = useRef({
+    localScrollMax: 1,
+    finalX: 0,
+    finalY: 0,
+    startScale: 2.0,
+    vh: 0,
+    sectionHeight: 0,
+    desktop: false,
+  });
+
+  // Sólo corre animación cuando la sección es visible
+  const inViewRef = useRef(false);
+
   useEffect(() => {
     const section = sectionRef.current;
     const sticky  = stickyRef.current;
@@ -21,64 +35,62 @@ export default function PortfolioIntro() {
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // === Parámetros responsivos ===
-    const isDesktop = () => window.matchMedia("(min-width: 768px)").matches;
-    const START_SCALE_DESKTOP = 2.0;
-    const START_SCALE_MOBILE  = 1.6;
-    const END_SCALE           = 1.0;
-
-    // Delays (ligeramente antes el caption en desktop para que no se pierda)
-// Delays (desktop un poco más tarde)
-    const DELAY_1_DESKTOP = 0.40, DELAY_2_DESKTOP = 0.55, DELAY_3_DESKTOP = 0.72;
-    const DELAY_1_MOBILE  = 0.48, DELAY_2_MOBILE  = 0.63, DELAY_3_MOBILE  = 0.78;
-
+    // Estados iniciales
     [l1, l2, cap].forEach(el => {
       if (!el) return;
-      el.style.opacity    = "0";
-      el.style.transform  = "translateY(16px)";
-      el.style.willChange = "opacity, transform";
+      el.style.opacity   = "0";
+      el.style.transform = "translateY(16px)";
     });
-    title.style.willChange = "transform";
+    title.style.transformOrigin = "left top";
 
-    if (reduce) {
-      title.style.transform = "none";
-      [l1, l2, cap].forEach(el => { if (el) { el.style.opacity = "1"; el.style.transform = "translateY(0)"; }});
-      return;
-    }
-
+    // Helper
     const clamp = (n, a, b) => Math.min(Math.max(n, a), b);
     const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-    let raf = 0;
+    // Recalcular métricas (sólo en mount/resize)
+    const recalc = () => {
+      const desktop = window.matchMedia("(min-width: 768px)").matches;
+      metricsRef.current.desktop = desktop;
+      metricsRef.current.startScale = desktop ? 2.0 : 1.6;
 
+      const vh = window.innerHeight;
+      metricsRef.current.vh = vh;
+
+      // Altura de la sección para progreso local
+      const sectionHeight = section.offsetHeight; // no fuerza layout caro
+      metricsRef.current.sectionHeight = sectionHeight;
+      metricsRef.current.localScrollMax = Math.max(1, sectionHeight - vh);
+
+      // Offset final (NO cambia con el scroll, sólo con layout)
+      const finalBox  = final.getBoundingClientRect();
+      const stickyBox = sticky.getBoundingClientRect();
+      metricsRef.current.finalX = finalBox.left - stickyBox.left;
+      metricsRef.current.finalY = finalBox.top  - stickyBox.top;
+    };
+
+    // Animación por scroll (usa SOLO una lectura por frame)
+    let raf = 0;
     const onScroll = () => {
+      if (!inViewRef.current || reduce) return; // no hacer nada si no está visible
       if (raf) return;
       raf = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const sectionHeight = section.offsetHeight;
+        const { localScrollMax, finalX, finalY, startScale, desktop, vh } = metricsRef.current;
 
-        const localScrollMax = Math.max(1, sectionHeight - vh);
+        const rect = section.getBoundingClientRect(); // 1 lectura/layout por frame
         const localScroll = clamp(-rect.top, 0, localScrollMax);
         const p = easeOutCubic(localScroll / localScrollMax);
 
-        const finalBox  = final.getBoundingClientRect();
-        const stickyBox = sticky.getBoundingClientRect();
-
-        const finalX = finalBox.left - stickyBox.left;
-        const finalY = finalBox.top  - stickyBox.top;
-
-        const startScale = isDesktop() ? START_SCALE_DESKTOP : START_SCALE_MOBILE;
-        const scale = startScale + (END_SCALE - startScale) * p;
+        const scale = startScale + (1.0 - startScale) * p;
         const tx = finalX * p;
         const ty = finalY * p;
 
-        title.style.transformOrigin = "left top";
+        // Sólo transform (barato)
         title.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
 
-        const [d1, d2, d3] = isDesktop()
-          ? [DELAY_1_DESKTOP, DELAY_2_DESKTOP, DELAY_3_DESKTOP]
-          : [DELAY_1_MOBILE , DELAY_2_MOBILE , DELAY_3_MOBILE ];
+        // Frases escalonadas (transform + opacity)
+        const [d1, d2, d3] = desktop
+          ? [0.40, 0.55, 0.72]
+          : [0.48, 0.63, 0.78];
 
         const step1 = clamp((p - d1) / 0.15, 0, 1);
         const step2 = clamp((p - d2) / 0.15, 0, 1);
@@ -92,13 +104,42 @@ export default function PortfolioIntro() {
       });
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    onScroll();
+    // IO para encender/apagar animación + will-change
+    const io = new IntersectionObserver(([e]) => {
+      inViewRef.current = e.isIntersecting;
+      if (inViewRef.current) {
+        title.style.willChange = "transform";
+        [l1,l2,cap].forEach(el => el && (el.style.willChange = "transform, opacity"));
+        onScroll(); // pinta el estado actual
+        window.addEventListener("scroll", onScroll, { passive: true });
+      } else {
+        title.style.willChange = "auto";
+        [l1,l2,cap].forEach(el => el && (el.style.willChange = "auto"));
+        window.removeEventListener("scroll", onScroll);
+      }
+    }, { rootMargin: "40% 0px 40% 0px" });
+
+    // Recalcular al inicio y en resize (usa rAF para no bloquear)
+    const ro = new ResizeObserver(() => requestAnimationFrame(recalc));
+    recalc();
+    ro.observe(section);
+    ro.observe(sticky);
+    ro.observe(final);
+
+    io.observe(section);
+    window.addEventListener("resize", recalc, { passive: true });
+
+    // Accesibilidad: si reduce motion, muestra directo y no anima
+    if (reduce) {
+      title.style.transform = "none";
+      [l1, l2, cap].forEach(el => { if (el) { el.style.opacity = "1"; el.style.transform = "translateY(0)"; } });
+    }
 
     return () => {
+      window.removeEventListener("resize", recalc);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      io.disconnect();
+      ro.disconnect();
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -142,14 +183,14 @@ export default function PortfolioIntro() {
             </h3>
           </div>
 
-          {/* Frases (más arriba en desktop) */}
+          {/* Frases */}
           <div
             className="
-                 md:col-start-8 md:col-span-5
-                md:justify-self-end md:text-right md:pr-12
-                md:max-w-[34rem]
-                mt-80
-                md:mt-[34vh] lg:mt-[38vh] xl:mt-[40vh] 2xl:mt-[42vh]
+              md:col-start-8 md:col-span-5
+              md:justify-self-end md:text-right md:pr-12
+              md:max-w-[34rem]
+              mt-80
+              md:mt-[34vh] lg:mt-[38vh] xl:mt-[40vh] 2xl:mt-[42vh]
             "
           >
             <p ref={line1Ref} className="text-2xl md:text-4xl font-extrabold text-blue-900 opacity-0">

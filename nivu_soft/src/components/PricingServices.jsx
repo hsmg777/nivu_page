@@ -176,7 +176,7 @@ function DesktopPinned({ data }) {
   const sections = data.length;
   const STEP_VH = 180;
   const heightVh = STEP_VH * (sections - 1) + 100;
-  const bgUrl = "/images/sky1.jpg";
+  const bgUrl = "/images/sky.jpeg";
 
   useEffect(() => {
     const el = outerRef.current;
