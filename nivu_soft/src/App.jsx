@@ -1,32 +1,25 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import Main from './pages/Main';
-import PricingServicesPage from './pages/PricingServices';
-import NotFound from './pages/NotFound';
-import About from './pages/About';   
-import Contact from './pages/Contact'; 
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Services } from './components/Services';
+import { Portfolio } from './components/Portfolio';
+import { Process } from './components/Process';
+import { Testimonials } from './components/Testimonials';
+import { CTA } from './components/CTA';
+import { Footer } from './components/Footer';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        
-        <Route path="/" element={<Main />} />
-
-        <Route path="/pricing" element={<PricingServicesPage />} />
-
-        <Route path="/about" element={<About />} />
-
-        <Route path="/contact" element={<Contact />} />
-
-        {/* Página de mantenimiento (opcional activar) */}
-        {/* <Route path="*" element={<Maintenance />} /> */}
-
-        {/* Página 404 como fallback */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <Portfolio />
+        <Process />
+        <Testimonials />
+        <CTA />
+      </main>
+      <Footer />
+    </div>
   );
 }
-
-export default App;
