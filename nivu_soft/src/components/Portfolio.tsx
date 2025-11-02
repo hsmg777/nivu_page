@@ -14,7 +14,7 @@ const projects = [
     category: 'Landing page',
     tags: ['Redes sociales', 'Pasarela de pagos', 'Carga rapida'],
     image:
-      '/public/images/mao.jpeg',
+      '/images/mao.jpeg',
     result: 'Donaciones y ayuda comunitaria',
     href: 'https://fundacionmariaaugustaochoaandrade.com/',
   },
@@ -37,7 +37,7 @@ const projects = [
     category: 'Servicios de lavanderia',
     tags: ['SEO Avanzado', 'Blog', 'Formularios'],
     image:
-      '/public/images/fc.jpeg',
+      '/images/fc.jpeg',
     result: 'Mayor atracción de clientes',
     href: 'https://fastcleaninglaundry.com',
   },
@@ -49,7 +49,7 @@ const projects = [
     category: 'Institucional',
     tags: ['ATS', 'Inteligencia artificial', 'Automatización'],
     image:
-      '/public/images/multi.jpeg',
+      '/images/multi.jpeg',
     result: 'Optimización de procesos; + 250 Postulantes ',
     href: 'https://multitalent.multiapoyo.com.ec',
   },
@@ -61,7 +61,7 @@ const projects = [
     category: 'Corporativo',
     tags: ['SEO avanzado', 'Internacional', 'Posicionamiento en web'],
     image:
-      '/public/images/inw.jpeg',
+      '/images/inw.jpeg',
     result: '+30 clientes /mes',
     href: 'https://infinitywatersite.com/',
   },
@@ -72,7 +72,7 @@ const projects = [
       'Plataforma gaming completa con tienda en línea, sistema de membresías VIP y panel administrativo.',
     category: 'E-commerce',
     tags: ['Tienda Online', 'Sistema VIP', 'Panel Admin'],
-    image: '/public/images/wtns.jpeg',
+    image: '/images/wtns.jpeg',
     result: '+300% ventas online',
     href: 'https://tienda.watones.net/',
   },

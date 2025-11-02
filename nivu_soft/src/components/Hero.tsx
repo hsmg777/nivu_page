@@ -115,7 +115,7 @@ export function Hero() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
               <img
-                src="/public/images/oficinas.png"
+                src="/images/oficinas.png"
                 alt="Desarrollo de Software"
                 className="w-full h-auto"
               />

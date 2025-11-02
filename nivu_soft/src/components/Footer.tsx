@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin, Instagram, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 import logo from '/public/images/logo_nube.png';
 
 export function Footer() {
