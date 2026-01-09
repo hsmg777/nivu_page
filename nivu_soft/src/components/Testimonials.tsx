@@ -5,13 +5,13 @@ import { motion } from 'motion/react';
 const testimonials = [
   {
     id: 1,
-    name: 'Carlos Mendoza',
-    role: 'CEO de Watones Network',
-    company: 'Watones Network',
-    content: 'NivuSoft transformó completamente nuestra plataforma gaming. El equipo es extremadamente profesional, cumplen los plazos establecidos y siempre están disponibles cuando necesitamos mejoras. Las ventas online aumentaron 300% desde el lanzamiento.',
+    name: 'Félix Lemos',
+    role: 'Administrador',
+    company: 'Autogruas EC',
+    content: 'NivuSoft transformó completamente nuestra página web. Nos ayudaron a obtener un mejor posicionamiento en Google y con eso alrededor de 30 clientes nuevos diarios gracias a meta ads, Su acompañamiento es realmente personalizado, el precio realmente justifica el trabajo.',
     rating: 5,
-    avatar: 'CM',
-    result: '+300% en ventas',
+    avatar: 'FL',
+    result: '+30 clientes diarios',
   },
   {
     id: 2,
@@ -67,7 +67,7 @@ export function Testimonials() {
             >
               <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 border-slate-200 hover:border-[#00D4FF]/50 relative">
                 <Quote className="absolute top-6 right-6 h-10 w-10 text-[#00D4FF]/20" />
-                
+
                 <CardContent className="pt-8 relative">
                   {/* Stars */}
                   <div className="flex space-x-1 mb-6">

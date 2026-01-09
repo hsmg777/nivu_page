@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
-import logo from '/public/images/lg_nivu.png';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,7 +28,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button onClick={() => scrollToSection('hero')} className="flex items-center space-x-3 group">
-            <img src={logo} alt="NivuSoft" className="h-12 w-auto" />
+            <img src='/images/lg_nivu.png' alt="NivuSoft" className="h-12 w-auto" />
           </button>
 
           {/* Desktop Navigation */}
@@ -46,8 +45,8 @@ export function Header() {
             <button onClick={() => scrollToSection('testimonios')} className="text-slate-700 hover:text-[#00D4FF] font-medium transition-colors">
               Testimonios
             </button>
-            <Button 
-              onClick={() => scrollToSection('contacto')} 
+            <Button
+              onClick={() => scrollToSection('contacto')}
               className="bg-[#00D4FF] hover:bg-[#00B8E6] text-slate-900 font-semibold shadow-lg shadow-[#00D4FF]/25 hover:shadow-xl hover:shadow-[#00D4FF]/30 transition-all duration-300"
             >
               <Phone className="h-4 w-4 mr-2" />
@@ -80,8 +79,8 @@ export function Header() {
               <button onClick={() => scrollToSection('testimonios')} className="text-left px-4 py-3 text-slate-700 hover:text-[#00D4FF] hover:bg-slate-50 rounded-lg font-medium transition-colors">
                 Testimonios
               </button>
-              <Button 
-                onClick={() => scrollToSection('contacto')} 
+              <Button
+                onClick={() => scrollToSection('contacto')}
                 className="bg-[#00D4FF] hover:bg-[#00B8E6] text-slate-900 font-semibold w-full"
               >
                 <Phone className="h-4 w-4 mr-2" />

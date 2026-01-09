@@ -4,8 +4,8 @@ import { Badge } from './ui/badge';
 import { Globe, Smartphone, Layout, Monitor, RefreshCw, Wrench, Check, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 const handleWhatsApp = () => {
-    window.open('https://wa.me/593994993430?text=Hola, me interesa conocer más sobre sus servicios de desarrollo de software', '_blank');
-  };
+  window.open('https://wa.me/593994993430?text=Hola, me interesa conocer más sobre sus servicios de desarrollo de software', '_blank');
+};
 
 const services = [
   {
@@ -13,7 +13,7 @@ const services = [
     icon: Globe,
     title: 'Página Web Básica',
     description: 'Landing page profesional, responsive y optimizada para buscadores.',
-    price: '$70',
+    price: '$80',
     features: [
       'Diseño responsive (móvil, tablet, escritorio)',
       'Optimización SEO básica',
@@ -154,7 +154,7 @@ export function Services() {
                     <Badge className="bg-slate-900 text-white px-3 py-1 text-xs">{service.badge}</Badge>
                   </div>
                 )}
-                
+
                 <CardHeader className="pb-4">
                   <div className="w-14 h-14 rounded-xl bg-[#00D4FF]/10 flex items-center justify-center mb-4">
                     <service.icon className="h-7 w-7 text-[#00D4FF]" />
@@ -175,7 +175,7 @@ export function Services() {
                     </div>
                     <div className="text-sm text-slate-600 font-medium">Tiempo de entrega: {service.delivery}</div>
                   </div>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-sm text-slate-700">
@@ -187,7 +187,7 @@ export function Services() {
                 </CardContent>
 
                 <CardFooter className="pt-6">
-                  <Button 
+                  <Button
                     className={`w-full h-12 font-semibold ${service.popular ? 'bg-[#00D4FF] hover:bg-[#00B8E6] text-slate-900 shadow-lg shadow-[#00D4FF]/30' : 'bg-slate-900 hover:bg-slate-800 text-white'} transition-all duration-300`}
                     onClick={handleWhatsApp}
                   >
@@ -215,7 +215,7 @@ export function Services() {
             <p className="text-slate-600 mb-6 text-lg">
               Cada proyecto es único. Cuéntanos tu idea y te preparamos una cotización a medida.
             </p>
-            <Button 
+            <Button
               size="lg"
               className="bg-[#00D4FF] hover:bg-[#00B8E6] text-slate-900 font-semibold shadow-lg shadow-[#00D4FF]/30"
               onClick={() => {

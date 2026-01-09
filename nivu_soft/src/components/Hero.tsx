@@ -55,8 +55,8 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
-              Desarrollo de páginas web, aplicaciones móviles y sistemas SaaS con tecnología de vanguardia. 
-              Desde <strong className="text-slate-900">$70 USD</strong>.
+              Desarrollo de páginas web, aplicaciones móviles y sistemas SaaS con tecnología de vanguardia.
+              Desde <strong className="text-slate-900">$80 USD</strong>.
             </motion.p>
 
             {/* Trust Indicators */}
@@ -134,7 +134,7 @@ export function Hero() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-slate-900">Desde</div>
-                  <div className="text-xl font-bold text-[#00D4FF]">$70 USD</div>
+                  <div className="text-xl font-bold text-[#00D4FF]">$80 USD</div>
                 </div>
               </div>
             </motion.div>

@@ -122,7 +122,7 @@ export function Footer() {
         <div className="pt-8 border-t border-slate-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-slate-400 text-sm">
-              © 2025 NivuSoft. Todos los derechos reservados.
+              © 2026 NivuSoft. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-slate-400 hover:text-[#00D4FF] transition-colors">
