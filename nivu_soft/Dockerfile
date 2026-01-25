@@ -17,7 +17,6 @@ RUN npm install --only=production
 COPY --from=build-stage /app/dist ./dist
 # Copy backend files
 COPY index.js .
-COPY .env .
 
 # SQLite database will be mounted as a volume for persistence
 # EXPOSE the Express port
