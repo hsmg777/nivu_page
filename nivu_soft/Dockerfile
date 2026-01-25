@@ -1,24 +1,26 @@
-FROM node:20
-
+# Stage 1: Build the frontend (React/Vite)
+FROM node:20-alpine AS build-stage
 WORKDIR /app
-
-COPY package.json package-lock.json* ./
+COPY package*.json ./
 RUN npm install
-
 COPY . .
+RUN npm run build
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
-FROM node:20
-
+# Stage 2: Production environment
+FROM node:20-alpine
 WORKDIR /app
+COPY package*.json ./
+# Install only production dependencies
+RUN npm install --only=production
 
-COPY package.json package-lock.json* ./
-RUN npm install
+# Copy built assets from stage 1
+COPY --from=build-stage /app/dist ./dist
+# Copy backend files
+COPY index.js .
+COPY .env .
 
-COPY . .
+# SQLite database will be mounted as a volume for persistence
+# EXPOSE the Express port
+EXPOSE 19245
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["node", "index.js"]

@@ -1,45 +1,47 @@
 <!doctype html>
 <html lang="es-EC">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <!-- Título + descripción -->
-    <title>Nivusoft | Desarrollo de software a medida en Ecuador (Web, Apps, SaaS)</title>
-    <meta name="description" content="Landing oficial de Nivusoft: páginas web, apps móviles y de escritorio, SaaS, soporte y mantenimiento. Cotiza tu proyecto en 24–48h." />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <!-- Indexación -->
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <!-- Título + descripción -->
+  <title>Nivusoft | Desarrollo de software a medida en Ecuador (Web, Apps, SaaS)</title>
+  <meta name="description"
+    content="Landing oficial de Nivusoft: páginas web, apps móviles y de escritorio, SaaS, soporte y mantenimiento. Cotiza tu proyecto en 24–48h." />
 
-    <!-- Canonical (landing única) -->
-    <link rel="canonical" href="https://nivusoftware.com/" />
+  <!-- Indexación -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
-    <!-- Iconos (desde /public) -->
-    <link rel="icon" href="/images/logo.jpeg" type="image/jpeg" />
-    <link rel="apple-touch-icon" href="/images/logo.jpeg" />
-    <meta name="theme-color" content="#0ea5e9" />
+  <!-- Canonical (landing única) -->
+  <link rel="canonical" href="https://nivusoftware.com/" />
 
-    <!-- Open Graph -->
-    <meta property="og:site_name" content="Nivusoft" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nivusoftware.com/" />
-    <meta property="og:title" content="Nivusoft | Desarrollo de software a medida en Ecuador" />
-    <meta property="og:description" content="Web, Apps, SaaS, soporte y mantenimiento. Cotiza en menos de 12h." />
-    <meta property="og:image" content="https://nivusoftware.com/images/logo.jpeg" />
-    <meta property="og:image:alt" content="Logo de Nivusoft" />
-    <meta property="og:locale" content="es_EC" />
+  <!-- Iconos (desde /public) -->
+  <link rel="icon" href="/images/logo.jpeg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="/images/logo.jpeg" />
+  <meta name="theme-color" content="#0ea5e9" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nivusoft | Desarrollo de software a medida en Ecuador" />
-    <meta name="twitter:description" content="Desarrollo de software a medida, páginas web, apps y SaaS." />
-    <meta name="twitter:image" content="https://nivusoftware.com/images/logo.jpeg" />
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Nivusoft" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nivusoftware.com/" />
+  <meta property="og:title" content="Nivusoft | Desarrollo de software a medida en Ecuador" />
+  <meta property="og:description" content="Web, Apps, SaaS, soporte y mantenimiento. Cotiza en menos de 12h." />
+  <meta property="og:image" content="https://nivusoftware.com/images/logo.jpeg" />
+  <meta property="og:image:alt" content="Logo de Nivusoft" />
+  <meta property="og:locale" content="es_EC" />
 
-    <!-- Preload del logo para mejorar LCP -->
-    <link rel="preload" as="image" href="/images/logo.jpeg" fetchpriority="high" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nivusoft | Desarrollo de software a medida en Ecuador" />
+  <meta name="twitter:description" content="Desarrollo de software a medida, páginas web, apps y SaaS." />
+  <meta name="twitter:image" content="https://nivusoftware.com/images/logo.jpeg" />
 
-    <!-- Datos estructurados (sin FAQ) -->
-    <script type="application/ld+json">
+  <!-- Preload del logo para mejorar LCP -->
+  <link rel="preload" as="image" href="/images/logo.jpeg" fetchpriority="high" />
+
+  <!-- Datos estructurados (sin FAQ) -->
+  <script type="application/ld+json">
     {
       "@context":"https://schema.org",
       "@graph":[
@@ -79,12 +81,17 @@
       ]
     }
     </script>
-  </head>
-  <body>
-    <!-- Contenedor para React -->
-    <div id="root"></div>
+  <!-- PayPhone SDK -->
+  <link rel="stylesheet" href="https://cdn.payphonetodoesposible.com/box/v1.1/payphone-payment-box.css">
+  <script type="module" src="https://cdn.payphonetodoesposible.com/box/v1.1/payphone-payment-box.js"></script>
+</head>
 
-    <!-- Bundle al final -->
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<body>
+  <!-- Contenedor para React -->
+  <div id="root"></div>
+
+  <!-- Bundle al final -->
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
