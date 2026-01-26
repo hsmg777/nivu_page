@@ -10,7 +10,7 @@ export const PaymentPortal = () => {
 
     // Params from initial link
     const clientName = query.get('c') || 'Cliente';
-    const amount = parseInt(query.get('m') || '0');
+    const amount = parseFloat(query.get('m') || '0');
 
     // Params from PayPhone redirect
     const transactionId = query.get('id');
@@ -20,15 +20,21 @@ export const PaymentPortal = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const buttonRendered = useRef(false);
 
+    // Get current verified amount and name from transaction ID if available, otherwise from query
+    const displayAmount = clientTransactionId && clientTransactionId.includes('-') && clientTransactionId.split('-').length >= 4
+        ? parseFloat(clientTransactionId.split('-')[2])
+        : amount;
+
+    const displayClientName = clientTransactionId && clientTransactionId.startsWith('SUB-')
+        ? clientTransactionId.split('-')[1].replace(/_/g, ' ')
+        : clientName;
+
+    const formattedAmount = displayAmount.toFixed(2).split('.');
+
     useEffect(() => {
-        // 1. If we have a transactionId, extract data from clientTransactionId if possible
+        // 1. If we have a transactionId, verify it
         if (clientTransactionId && clientTransactionId.startsWith('SUB-')) {
-            const parts = clientTransactionId.split('-');
-            if (parts.length >= 3) {
-                // Format: SUB-Name-Amount-Timestamp
-                // Note: we can't easily parse amount back if we don't know the parts, 
-                // but we can trust the query params if they exist or the parsed values.
-            }
+            // ... (rest of the logic)
         }
 
         if (transactionId && clientTransactionId && status === 'initial') {
@@ -74,8 +80,8 @@ export const PaymentPortal = () => {
             token: "ZO3qrJXFUc8MF__JrYBaA0SpThQamSero9fYZKHhlhX3vYyUHxtPDJKzrigSqg2U6wDBVbgsAXcK2BMmNSKaq0rVYUkxroJb4bLokhm1iVYH-47x5d9jpwPd_Jyy3wvig1LOixd3CNNKaknSYTBQa6c99PYIvKz3vySxcVuvR6EKCT-aIp3mGZcH7y3u6wqvs1Xou2RYbBPsY3aStv8o9VchMZPFpAUXy2ivqUSrnRioOYctW-ltS_QwluJmwdfN1TVusfwov9sY97GFeGcKziBd2WvIUTDOU6iqJvTx5mgvWtEVc41u_3DwPpgMH5AYANbVVWlELr647PucVIkpQTyRqgU",
             storeId: "e9f8dda3-f4ca-44e6-9837-50fe91952586",
             clientTransactionId: `SUB-${clientName.replace(/\s/g, '_')}-${amount}-${Date.now()}`,
-            amount: amount * 100,
-            amountWithoutTax: amount * 100,
+            amount: Math.round(amount * 100),
+            amountWithoutTax: Math.round(amount * 100),
             currency: "USD",
             reference: `Suscripción Nivu - ${clientName}`,
             lang: "es",
@@ -229,20 +235,17 @@ export const PaymentPortal = () => {
                                         <div className="space-y-2">
                                             <p className="text-slate-400 text-[10px] uppercase tracking-widest font-black">Cliente:</p>
                                             <p className="text-2xl font-black tracking-tight text-slate-900 uppercase italic">
-                                                {clientTransactionId && clientTransactionId.startsWith('SUB-')
-                                                    ? clientTransactionId.split('-')[1].replace(/_/g, ' ')
-                                                    : clientName}
+                                                {displayClientName}
                                             </p>
                                         </div>
                                         <div className="space-y-2 text-right">
                                             <p className="text-slate-400 text-[10px] uppercase tracking-widest font-black">Cuota Mensual</p>
                                             <p className="text-5xl font-black italic text-[#0ea5e9] tracking-tighter leading-none">
-                                                ${clientTransactionId && clientTransactionId.includes('-') && clientTransactionId.split('-').length >= 4
-                                                    ? clientTransactionId.split('-')[2]
-                                                    : amount}<span className="text-2xl">.00</span>
+                                                ${formattedAmount[0]}<span className="text-2xl">.{formattedAmount[1]}</span>
                                             </p>
                                         </div>
                                     </div>
+
 
                                     <div className="flex items-center gap-4 text-[10px] text-slate-500 bg-slate-50 p-6 rounded-[2rem] border border-slate-100 font-bold uppercase tracking-wider">
                                         <CreditCard size={20} className="text-[#0ea5e9] flex-shrink-0" />
