@@ -184,6 +184,53 @@ app.post('/api/login', (req, res) => {
   });
 });
 
+// --- RUTA PARA FORZAR PRUEBA DEL CRON ---
+app.get('/api/force-recurrent-payments', authenticate, async (req, res) => {
+  console.log('FORZANDO REVISIÓN MANUAL DE COBROS...');
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+  const todayISO = today.toISOString();
+
+  db.all("SELECT * FROM subscriptions WHERE status = 'active' AND nextPaymentDate <= ?", [todayISO], async (err, subs) => {
+    if (err) return res.status(500).json({ error: err.message });
+
+    let results = [];
+    for (const sub of subs) {
+      // (Misma lógica que el cron)
+      if (!sub.cardToken || sub.cardToken === 'MANUAL-REQUIRED') {
+        results.push({ client: sub.clientName, status: 'Skipped - Manual required' });
+        continue;
+      }
+
+      try {
+        const rawToken = process.env.PAYPHONE_TOKEN;
+        const cleanToken = rawToken.startsWith('Bearer ') ? rawToken.split(' ')[1] : rawToken;
+
+        const response = await axios.post('https://pay.payphonetodoesposible.com/api/v2/pay/token', {
+          cardToken: sub.cardToken,
+          amount: sub.amount,
+          amountWithoutTax: sub.amount,
+          amountWithTax: 0, tax: 0, currency: "USD",
+          clientTransactionId: `FORCE-${sub.id}-${Date.now()}`,
+          storeId: process.env.PAYPHONE_STORE_ID
+        }, { headers: { 'Authorization': `Bearer ${cleanToken}` } });
+
+        if (response.data.status === 'Approved' || response.data.transactionStatus === 'Approved') {
+          const nextDate = new Date();
+          nextDate.setDate(nextDate.getDate() + 30);
+          db.run("UPDATE subscriptions SET lastPaymentDate = ?, nextPaymentDate = ? WHERE id = ?", [new Date().toISOString(), nextDate.toISOString(), sub.id]);
+          results.push({ client: sub.clientName, status: 'Approved' });
+        } else {
+          results.push({ client: sub.clientName, status: 'Rejected', detail: response.data });
+        }
+      } catch (error) {
+        results.push({ client: sub.clientName, status: 'Error', error: error.message });
+      }
+    }
+    res.json({ message: "Proceso de cobro forzado finalizado", processed: subs.length, details: results });
+  });
+});
+
 const CryptoJS = require('crypto-js');
 
 // --- ENCRYPT HELPER ---
@@ -200,17 +247,33 @@ function encryptAES(text, key) {
 // --- CRON JOB (Cobros Recurrentes) ---
 cron.schedule('0 0 * * *', async () => {
   console.log('Revisando cobros recurrentes...');
-  const today = new Date().toISOString().split('T')[0];
+  // Usamos el inicio del día de hoy en formato ISO para la comparación
+  const today = new Date();
+  today.setHours(23, 59, 59, 999); // Incluimos todo el día de hoy
+  const todayISO = today.toISOString();
 
-  db.all("SELECT * FROM subscriptions WHERE status = 'active' AND nextPaymentDate LIKE ?", [`${today}%`], async (err, subs) => {
-    if (err) return console.error(err);
+  // Buscamos suscripciones activas cuya fecha de pago sea hoy o haya pasado (por si el servidor estuvo apagado)
+  db.all("SELECT * FROM subscriptions WHERE status = 'active' AND nextPaymentDate <= ?", [todayISO], async (err, subs) => {
+    if (err) return console.error("Error consultando suscripciones para cobro:", err);
+
+    console.log(`Encontradas ${subs.length} suscripciones pendientes de cobro.`);
 
     for (const sub of subs) {
       try {
+        if (!sub.cardToken || sub.cardToken === 'MANUAL-REQUIRED') {
+          console.warn(`Omitiendo cobro automático para ${sub.clientName} (ID: ${sub.id}): Requiere intervención manual (no hay token de tarjeta).`);
+          continue;
+        }
+
         console.log(`Procesando cobro para ${sub.clientName} - $${sub.amount / 100}`);
 
+        // Limpiar el token para evitar el error de "Double Bearer"
+        const rawToken = process.env.PAYPHONE_TOKEN;
+        const cleanToken = rawToken.startsWith('Bearer ')
+          ? rawToken.split(' ')[1]
+          : rawToken;
+
         // Llamada al API de PayPhone V2 (Tokenización)
-        // Endpoint sugerido en docs: https://pay.payphonetodoesposible.com/api/v2/pay/token
         const response = await axios.post('https://pay.payphonetodoesposible.com/api/v2/pay/token', {
           cardToken: sub.cardToken,
           amount: sub.amount,
@@ -221,20 +284,29 @@ cron.schedule('0 0 * * *', async () => {
           clientTransactionId: `REC-${sub.id}-${Date.now()}`,
           storeId: process.env.PAYPHONE_STORE_ID
         }, {
-          headers: { 'Authorization': `Bearer ${process.env.PAYPHONE_TOKEN}` }
+          headers: { 'Authorization': `Bearer ${cleanToken}` }
         });
 
-        if (response.data.status === 'Approved' || response.data.transactionStatus === 'Approved') {
+        // PayPhone responde con status 'Approved' o transactionStatus 'Approved' según la versión del endpoint
+        const isApproved = response.data.status === 'Approved' || response.data.transactionStatus === 'Approved';
+
+        if (isApproved) {
           const nextDate = new Date();
           nextDate.setDate(nextDate.getDate() + 30);
-          db.run("UPDATE subscriptions SET lastPaymentDate = ?, nextPaymentDate = ? WHERE id = ?", [new Date().toISOString(), nextDate.toISOString(), sub.id]);
-          console.log(`Cobro exitoso para ${sub.clientName}`);
+
+          db.run("UPDATE subscriptions SET lastPaymentDate = ?, nextPaymentDate = ? WHERE id = ?",
+            [new Date().toISOString(), nextDate.toISOString(), sub.id],
+            (err) => {
+              if (err) console.error(`Error actualizando fechas para ${sub.clientName}:`, err);
+              else console.log(`Cobro y actualización exitosa para ${sub.clientName}`);
+            }
+          );
         } else {
-          console.warn(`Cobro rechazado para ${sub.clientName}: ${response.data.status}`);
-          // Opcional: Marcar suscripción como pendiente de pago
+          console.warn(`Cobro rechazado para ${sub.clientName}:`, response.data.message || response.data.status);
+          // Opcional: Podrías cambiar el status a 'past_due' aquí si falla el cobro
         }
       } catch (error) {
-        console.error(`Error cobrando a ${sub.clientName}:`, error.response?.data || error.message);
+        console.error(`Error procesando cobro para ${sub.clientName}:`, error.response?.data || error.message);
       }
     }
   });

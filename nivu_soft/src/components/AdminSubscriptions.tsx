@@ -10,6 +10,7 @@ interface Subscription {
     lastPaymentDate: string;
     nextPaymentDate: string;
     status: string;
+    cardToken?: string;
 }
 
 export const AdminSubscriptions = () => {
@@ -231,6 +232,7 @@ export const AdminSubscriptions = () => {
                                         <th className="pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Info Cliente</th>
                                         <th className="pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Plan</th>
                                         <th className="pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Próximo Cobro</th>
+                                        <th className="pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">Estado Card</th>
                                         <th className="pb-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -287,6 +289,17 @@ export const AdminSubscriptions = () => {
                                                             Último: {sub.lastPaymentDate ? new Date(sub.lastPaymentDate).toLocaleDateString() : 'N/A'}
                                                         </p>
                                                     </>
+                                                )}
+                                            </td>
+                                            <td className="py-5 text-center">
+                                                {sub.cardToken && sub.cardToken !== 'MANUAL-REQUIRED' ? (
+                                                    <span className="px-2 py-1 bg-green-100 text-green-700 text-[9px] font-bold rounded-full border border-green-200 uppercase tracking-tighter">
+                                                        Tokenizado
+                                                    </span>
+                                                ) : (
+                                                    <span className="px-2 py-1 bg-amber-100 text-amber-700 text-[9px] font-bold rounded-full border border-amber-200 uppercase tracking-tighter">
+                                                        Manual
+                                                    </span>
                                                 )}
                                             </td>
                                             <td className="py-5 text-right">

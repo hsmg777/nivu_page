@@ -77,7 +77,7 @@ export const PaymentPortal = () => {
 
         buttonRendered.current = true;
         const ppb = new (window as any).PPaymentButtonBox({
-            token: "ZO3qrJXFUc8MF__JrYBaA0SpThQamSero9fYZKHhlhX3vYyUHxtPDJKzrigSqg2U6wDBVbgsAXcK2BMmNSKaq0rVYUkxroJb4bLokhm1iVYH-47x5d9jpwPd_Jyy3wvig1LOixd3CNNKaknSYTBQa6c99PYIvKz3vySxcVuvR6EKCT-aIp3mGZcH7y3u6wqvs1Xou2RYbBPsY3aStv8o9VchMZPFpAUXy2ivqUSrnRioOYctW-ltS_QwluJmwdfN1TVusfwov9sY97GFeGcKziBd2WvIUTDOU6iqJvTx5mgvWtEVc41u_3DwPpgMH5AYANbVVWlELr647PucVIkpQTyRqgU",
+            token: "xPbv2ydg_LV41N_i95MeiCUL-b029OJpXqBs14fq6ESN6o_HiwOrVsrx2MVejWJIeZs_RPs7N0QamTX68PLvZ2Qa39P2Xyh2DjPcOgx1eSyen5u2vG-tsAY-2rik-yQNat2zWVrpwupyCJv7efQFdPD0iG2Ft5vyXR0lpJA54Ux-8KUvTIQPbFK8zaNI9vOgOzphgKtNnCSrnXv_szqB4RaZ9sooOIFdZwWjWx68mtpCrqVZQCUN-tq5tZsIfZX4JGtP7L0iVvyOXnPbvaYlGLOGJLBD3Nn-JI1gB3RoMMlIzh_GLraY_Opg3oUdxe0129jIFxp54a3m3kgyVSilI3A4YwU",
             storeId: "e9f8dda3-f4ca-44e6-9837-50fe91952586",
             clientTransactionId: `SUB-${clientName.replace(/\s/g, '_')}-${amount}-${Date.now()}`,
             amount: Math.round(amount * 100),
